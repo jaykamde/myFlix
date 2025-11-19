@@ -13,6 +13,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true); // start loader before fetch
         const res = await axios.get(`https://www.omdbapi.com/?apikey=16c5c67a&s=${query}`);
         if (res.data.Search) {
           setMovies(res.data.Search);
@@ -21,6 +22,9 @@ const SearchResults = () => {
         }
       } catch (error) {
         console.error('Failed to fetch data:', error);
+        setMovies([]);
+      } finally {
+        setLoading(false); // stop loader after fetch
       }
     };
 
