@@ -18,7 +18,9 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await axios.get(`https://www.omdbapi.com/?apikey=16c5c67a&i=${id}&plot=full`);
+        const res = await axios.get(
+          `https://www.omdbapi.com/?apikey=16c5c67a&i=${id}&plot=full`
+        );
         setMovie(res.data);
       } catch (error) {
         toast.error('Failed to fetch movie details');
